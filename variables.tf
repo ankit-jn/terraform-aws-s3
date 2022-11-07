@@ -73,17 +73,12 @@ variable "server_side_encryption" {
     description = <<EOF
 Server Side Encryption Configuration
 
-bucket_key_enabled: Whether or not to use Amazon S3 Bucket Keys for SSE-KMS.
+bucket_key_enabled: Flag to decide if use Amazon S3 Bucket Keys for SSE-KMS.
 sse_algorithm: The server-side encryption algorithm to use.
 kms_key: The AWS KMS master key ID used for the SSE-KMS encryption.
 EOF
-    type = map(string)
+    type = map(any)
     default = {}
-
-    validation {
-        condition     = contains(["Enabled", "Disabled"], lookup(var.server_side_encryption, "bucket_key_enabled", "Disabled"))
-        error_message = "Possible values are `Enabled` and `Disabled`."
-    }
     
     validation {
         condition     = contains(["AES256", "aws:kms"], lookup(var.server_side_encryption, "sse_algorithm", "AES256"))
