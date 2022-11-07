@@ -1,7 +1,7 @@
 locals {
 
     is_sse_kms = (var.enable_sse 
-                        && lookup(var.server_side_encryption, "sse_algorithm", "AES256") == "aws:kms")
+                        && try(var.server_side_encryption.sse_algorithm, "AES256") == "aws:kms")
 
     create_kms_key = local.is_sse_kms && var.create_kms_key
 

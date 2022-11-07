@@ -43,10 +43,10 @@ resource aws_s3_bucket_server_side_encryption_configuration "this" {
     expected_bucket_owner = var.expected_bucket_owner
 
     rule {
-        bucket_key_enabled = lookup(var.server_side_encryption, "bucket_key_enabled", null)
+        bucket_key_enabled = try(var.server_side_encryption.bucket_key_enabled, null)
         
         apply_server_side_encryption_by_default {
-            sse_algorithm = lookup(var.server_side_encryption, "sse_algorithm", "AES256")
+            sse_algorithm = try(var.server_side_encryption.sse_algorithm, "AES256")
             kms_master_key_id = local.is_sse_kms ? local.kms_key : null
         }
     }
