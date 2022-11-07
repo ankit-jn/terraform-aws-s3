@@ -60,7 +60,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | Name | Description | Type | Default | Required |
 |:------|:------|:------|:------|:------:|
 | <a name="bucket_key_enabled"></a> [bucket_key_enabled](#input\_bucket\_key\_enabled) | Whether or not to use Amazon S3 Bucket Keys for SSE-KMS.<br>Possible Values:<br>&nbsp;&nbsp;&nbsp;`Enabled`<br>&nbsp;&nbsp;&nbsp;`Disabled` | `string` | `null` | no |
-| <a name="sse_algorithm"></a> [sse_algorithm](#input\_sse\_algorithm) | The server-side encryption algorithm to use.<br>Possible Values:<br>&nbsp;&nbsp;&nbsp;`AES256`<br>&nbsp;&nbsp;&nbsp;`Disabled` | `string` | `"aws:kms"` | no |
+| <a name="sse_algorithm"></a> [sse_algorithm](#input\_sse\_algorithm) | The server-side encryption algorithm to use.<br>Possible Values:<br>&nbsp;&nbsp;&nbsp;`AES256`<br>&nbsp;&nbsp;&nbsp;`aws:kms` | `string` | `"AES256"` | no |
 | <a name="kms_key"></a> [kms_key](#input\_kms\_key) | The AWS KMS master key ID used for the SSE-KMS encryption. | `string` | `null` | no |
 
 ## Outputs
