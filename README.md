@@ -26,7 +26,7 @@ This module features the following components to be provisioned with different c
 
 ## Examples
 
-Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-examples/tree/main/aws-security-groups) for effectively utilizing this module.
+Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-examples/tree/main/aws-s3) for effectively utilizing this module.
 
 ## Inputs
 
