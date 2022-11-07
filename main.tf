@@ -47,7 +47,7 @@ resource aws_s3_bucket_server_side_encryption_configuration "this" {
         
         apply_server_side_encryption_by_default {
             sse_algorithm = lookup(var.server_side_encryption, "sse_algorithm", "AES256")
-            kms_master_key_id = var.create_kms_key ? module.encryption_key[0].key_id : lookup(var.server_side_encryption, "kms_key", null)
+            kms_master_key_id = local.is_sse_kms ? local.kms_key : null
         }
     }
 }

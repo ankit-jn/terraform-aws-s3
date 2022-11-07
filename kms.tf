@@ -2,7 +2,7 @@
 module "encryption_key" {
     source = "git::https://github.com/arjstack/terraform-aws-kms.git?ref=v1.0.0"
 
-    count = var.create_kms_key ? 1 : 0
+    count = local.create_kms_key ? 1 : 0
 
     account_id = data.aws_caller_identity.current.account_id
 
