@@ -38,10 +38,10 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="acl"></a> [acl](#input\_acl) | The canned ACL to apply to the bucket. | `string` | `private` | no | |
 | <a name="expected_bucket_owner"></a> [expected_bucket_owner](#input\_expected\_bucket\_owner) | The account ID of the expected bucket owner. | `string` | `null` | no | |
 | <a name="enable_versioning"></a> [enable_versioning](#input\_enable\_versioning) | Flag to decide if bucket versioning is enabled. | `bool` | `false` | no | |
-| <a name="versioning"></a> [versioning](#versioning) | S3 bucket Versioning Configuration | `map(string)` | `{}` | no | |
+| <a name="versioning"></a> [versioning](#versioning) | S3 bucket Versioning Configuration | `map(string)` | `{}` | no | <pre>{<br>   status     = "Enabled"<br>   mfa_delete = "Enabled"<br>} |
 | <a name="enable_sse"></a> [enable_sse](#input\_enable\_sse) | Flag to decide if server side encryption is enabled. | `bool` | `false` | no | |
 | <a name="create_kms_key"></a> [create_kms_key](#input\_create\_kms\_key) | Flag to decide if new KMS key (symmetric, encrypt/decrypt) is required for SSE-KMS encryption | `bool` | `false` | no | |
-| <a name="server_side_encryption"></a> [server_side_encryption](#server\_side\_encryption) | Server Side Encryption Configuration | `map(string)` | `{}` | no | |
+| <a name="server_side_encryption"></a> [server_side_encryption](#server\_side\_encryption) | Server Side Encryption Configuration | `map(string)` | `{}` | no | <pre>{<br>   bucket_key_enabled = "Enabled"<br>   sse_algorithm      = "aws:kms"<br>} |
 | <a name="bucket_public_access"></a> [bucket_public_access](#input\_bucket\_public\_access) | Manages S3 bucket-level Public Access | `map(bool)` | <pre>{<br>   block_public_acls       = true<br>   block_public_policy     = true<br>   ignore_public_acls      = true<br>   restrict_public_buckets = true<br>} | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
 
@@ -69,7 +69,6 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|
 | <a name="id"></a> [id](#output\_id) | The name of the bucket. | `string` | 
 | <a name="arn"></a> [arn](#output\_arn) | The ARN of the bucket. | `string` | 
-| <a name="id"></a> [id](#output\_id) | The name of the bucket. | `string` | 
 | <a name="kms_key"></a> [kms_key](#output\_kms\_key) | `map` | Attribute Map of KMS customer master key (CMK) to be used for encryption of the bucket objects.<br>&nbsp;&nbsp;&nbsp;`key_id` - The Key ID KSM Key.<br>&nbsp;&nbsp;&nbsp;`arn` - ARN of KMS Key<br>&nbsp;&nbsp;&nbsp;`policy` - KMS Key Policy. |
 
 ## Authors
