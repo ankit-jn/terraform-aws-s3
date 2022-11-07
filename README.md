@@ -1,4 +1,4 @@
-# ARJ-Stack: AWS Simple Srtorage Servcie (S3) Terraform module
+# ARJ-Stack: AWS Simple Storage Servcie (S3) Terraform module
 
 A Terraform module for configuring S3 buckets
 
