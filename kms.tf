@@ -6,7 +6,7 @@ module "encryption_key" {
 
     account_id = data.aws_caller_identity.current.account_id
 
-    description = lookup(var.encryption_key_configs, "description", null)
+    description = format("KMS Key for S3 bucket [%s] encryption", var.name)
 
     key_spec    = "SYMMETRIC_DEFAULT"
     key_usage   = "ENCRYPT_DECRYPT"
