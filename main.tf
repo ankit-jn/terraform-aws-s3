@@ -10,10 +10,36 @@ resource aws_s3_bucket "this" {
 
 ## The canned ACL
 resource aws_s3_bucket_acl "this" {
-    bucket = aws_s3_bucket.this.id
-    acl    = var.acl
 
+    count = ((try(length(var.grants), 0) > 0) 
+                    || (var.acl != null && var.acl != "")) ? 1 : 0
+
+    bucket = aws_s3_bucket.this.id
     expected_bucket_owner = var.expected_bucket_owner
+    
+    acl    = try(length(var.grants), 0) > 0 ? null : try(var.acl, "private")
+
+    dynamic "access_control_policy" {
+        for_each = try(length(var.grants), 0) > 0 ? [1] : []
+        content {
+            dynamic "grant" {
+                for_each = var.grants
+                content {
+                    permission = grant.value.permission
+                    grantee {
+                        email_address   = try(grant.value.email, null)
+                        id              = try(grant.value.id, null)
+                        type            = grant.value.type
+                        uri             = try(grant.value.uri, null)
+                    }
+                }
+            }
+            owner {
+                id = try(var.owner.id, data.aws_canonical_user_id.this.id)
+                display_name = try(var.owner.name, null)
+            }
+        }
+    }
 }
 
 ## S3 bucket Versioning

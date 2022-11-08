@@ -37,7 +37,9 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="name"></a> [name](#input\_name) | The name of the bucket | `string` |  | yes | |
 | <a name="force_destroy"></a> [force_destroy](#input\_force\_destroy) | Flag to decide if all objects (including any locked objects) should be deleted from the bucket so that the bucket can be destroyed without error | `bool` | `false` | no | |
 | <a name="object_lock_enabled"></a> [object_lock_enabled](#input\_object\_lock\_enabled) | Flag to decide if this bucket has an Object Lock configuration enabled. | `bool` | `null` | no | |
-| <a name="acl"></a> [acl](#input\_acl) | The canned ACL to apply to the bucket. | `string` | `private` | no | |
+| <a name="acl"></a> [acl](#input\_acl) | The canned ACL to apply to the bucket. | `string` | `null` | no | |
+| <a name="grants"></a> [grants](#acl\_grants) | Set of grant configurations. | `set(map(string))` | `[]` | no | <pre>[<br>   {<br>     permission = "FULL_CONTROL"<br>     type = "CanonicalUser"<br>     id = "<Canonical User ID>"<br>   }<br>] |
+| <a name="owner"></a> [owner](#input\_acl\_owner) | The Bucket Owner's configuration map. | `map(string)` | `{}` | no | |
 | <a name="expected_bucket_owner"></a> [expected_bucket_owner](#input\_expected\_bucket\_owner) | The account ID of the expected bucket owner. | `string` | `null` | no | |
 | <a name="enable_versioning"></a> [enable_versioning](#input\_enable\_versioning) | Flag to decide if bucket versioning is enabled. | `bool` | `false` | no | |
 | <a name="versioning"></a> [versioning](#versioning) | S3 bucket Versioning Configuration | `map(string)` | `{}` | no | <pre>{<br>   status     = "Enabled"<br>   mfa_delete = "Enabled"<br>} |
@@ -50,6 +52,23 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
 
 ## Nested Configuration Maps:  
+
+#### acl_grants 
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="permission"></a> [permission](#input\_permission) | Logging permissions assigned to the grantee for the bucket. | `string` | `` | yes |
+| <a name="id"></a> [id](#input\_id) | The canonical user ID of the grantee. | `string` | `null` | no |
+| <a name="type"></a> [type](#input\_type) | Type of grantee. | `string` |  | yes |
+| <a name="uri"></a> [uri](#input\_uri) | URI of the grantee group. | `string` | `null` | no |
+| <a name="email"></a> [email](#input\_email) | Email address of the grantee. | `string` | `null` | no |
+
+#### acl_owner 
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="id"></a> [id](#input\_id) | The ID of the owner. | `string` |  | yes |
+| <a name="name"></a> [name](#input\_name) | The display name of the owner. | `string` | `null` | no |
 
 #### versioning
 

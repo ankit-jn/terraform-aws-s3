@@ -21,7 +21,31 @@ variable "object_lock_enabled" {
 variable "acl" {
     description = "The canned ACL to apply to the bucket."
     type        = string
-    default     = "private"
+    default     = null
+}
+
+variable "grants" {
+    description = <<EOF
+Set of grant configurations where each entry is a map of the following key-pair
+permission  : (Required) Logging permissions assigned to the grantee for the bucket.
+id          : (Optional) The canonical user ID of the grantee.
+type        : (Required) Type of grantee.
+uri         : (Optional) URI of the grantee group.
+email       : (Optional) Email address of the grantee.
+EOF
+    type        = set(map(string))
+    default     = []
+}
+
+variable "owner" {
+    description = <<EOF
+The Bucket Owner's configuration map
+
+id  : (Required) The ID of the owner.
+name: (Optional) The display name of the owner.
+EOF
+    type        = map(string)
+    default     = {}
 }
 
 variable "expected_bucket_owner" {

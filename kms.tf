@@ -4,7 +4,7 @@ module "encryption_key" {
 
     count = local.create_kms_key ? 1 : 0
 
-    account_id = data.aws_caller_identity.current.account_id
+    account_id = data.aws_caller_identity.this.account_id
 
     description = format("KMS Key for S3 bucket [%s] encryption", var.name)
 
@@ -13,9 +13,9 @@ module "encryption_key" {
 
     aliases =  [format("%s-key", var.name)]
 
-    key_administrators = [data.aws_caller_identity.current.arn]
-    key_grants_users = [data.aws_caller_identity.current.arn]
-    key_users = [data.aws_caller_identity.current.arn]
+    key_administrators = [data.aws_caller_identity.this.arn]
+    key_grants_users = [data.aws_caller_identity.this.arn]
+    key_users = [data.aws_caller_identity.this.arn]
 
     tags = var.default_tags
 }
