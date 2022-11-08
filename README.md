@@ -10,6 +10,8 @@ This module features the following components to be provisioned with different c
 - S3 bucket Versioning [[aws_s3_bucket_versioning](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning)]
 - S3 Bucket Server Side Encryption [[aws_s3_bucket_server_side_encryption_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration)]
 - S3 bucket-level Public Access [[aws_s3_bucket_public_access_block](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block)]
+- S3 bucket-CORS Configurations [[aws_s3_bucket_cors_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_cors_configuration)]
+- S3 bucket - Transfer Acceleration [[aws_s3_bucket_accelerate_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_accelerate_configuration)]
 
 ## Requirements
 

@@ -84,6 +84,7 @@ resource aws_s3_bucket_cors_configuration "this" {
     }
 }
 
+## Transfer Acceleration
 resource aws_s3_bucket_accelerate_configuration "this" {
 
     count = var.transfer_acceleration != null ? 1 : 0
