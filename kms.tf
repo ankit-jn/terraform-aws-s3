@@ -15,7 +15,7 @@ module "encryption_key" {
 
     key_administrators = [data.aws_caller_identity.current.arn]
     key_grants_users = [data.aws_caller_identity.current.arn]
-    key_symmetric_encryption_users = [data.aws_caller_identity.current.arn]
+    key_users = [data.aws_caller_identity.current.arn]
 
     tags = var.default_tags
 }
