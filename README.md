@@ -44,6 +44,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="server_side_encryption"></a> [server_side_encryption](#server\_side\_encryption) | Server Side Encryption Configuration | `map(string)` | `{}` | no | <pre>{<br>   bucket_key_enabled = "Enabled"<br>   sse_algorithm      = "aws:kms"<br>} |
 | <a name="bucket_public_access"></a> [bucket_public_access](#input\_bucket\_public\_access) | Manages S3 bucket-level Public Access | `map(bool)` | <pre>{<br>   block_public_acls       = true<br>   block_public_policy     = true<br>   ignore_public_acls      = true<br>   restrict_public_buckets = true<br>} | no | |
 | <a name="cors_rules"></a> [cors_rules](#cors_rule) | List of CORS configuration maps | `any` | <pre>{<br>   allowed_headers = ["*"]<br>   allowed_methods = ["PUT", "POST"]<br>   allowed_origins = ["https://arjstack.com"]<br>   expose_headers  = ["ETag"]<br>   max_age_seconds = 3000<br>} | no | |
+| <a name="transfer_acceleration"></a> [transfer_acceleration](#input\_transfer\_acceleration) | Sets the accelerate configuration of the bucket. Possible values are `Enabled` or `Suspended`. | `string` | `null` | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
 
 ## Nested Configuration Maps:  

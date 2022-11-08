@@ -120,6 +120,18 @@ EOF
     type = any
     default = []
 }
+
+variable "transfer_acceleration" {
+  description = "(Optional) Sets the accelerate configuration of the bucket. Possible values are `Enabled` or `Suspended`."
+  type        = string
+  default     = null
+
+  validation {
+        condition = var.transfer_acceleration != null ? contains(["Enabled", "Suspended"], var.transfer_acceleration) : true
+        error_message = "Transfer Acceleration Status can be `Enabled` or `Suspended`"
+  }
+}
+
 variable "default_tags" {
     description = "(Optional) A map of tags to assign to all the resource."
     type = map(string)
