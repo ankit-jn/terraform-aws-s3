@@ -104,6 +104,22 @@ EOF
     }
 
 }
+
+variable "cors_rules" {
+    description = <<EOF
+List of CORS configuration maps where each entry is map with following kay-pairs
+
+id: (Optional) Unique identifier for the rule.
+allowed_headers: (Optional) Set of Headers that are specified in the Access-Control-Request-Headers header.
+allowed_methods: (Required) Set of HTTP methods that you allow the origin to execute.
+allowed_origins: (Required) Set of origins you want customers to be able to access the bucket from.
+expose_headers: (Optional) Set of headers in the response that you want customers to be able to access from their applications
+max_age_seconds: (Optional) The time in seconds that your browser is to cache the preflight response for the specified resource.
+
+EOF
+    type = any
+    default = []
+}
 variable "default_tags" {
     description = "(Optional) A map of tags to assign to all the resource."
     type = map(string)

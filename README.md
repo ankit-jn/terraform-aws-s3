@@ -43,6 +43,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="create_kms_key"></a> [create_kms_key](#input\_create\_kms\_key) | Flag to decide if new KMS key (symmetric, encrypt/decrypt) is required for SSE-KMS encryption | `bool` | `false` | no | |
 | <a name="server_side_encryption"></a> [server_side_encryption](#server\_side\_encryption) | Server Side Encryption Configuration | `map(string)` | `{}` | no | <pre>{<br>   bucket_key_enabled = "Enabled"<br>   sse_algorithm      = "aws:kms"<br>} |
 | <a name="bucket_public_access"></a> [bucket_public_access](#input\_bucket\_public\_access) | Manages S3 bucket-level Public Access | `map(bool)` | <pre>{<br>   block_public_acls       = true<br>   block_public_policy     = true<br>   ignore_public_acls      = true<br>   restrict_public_buckets = true<br>} | no | |
+| <a name="cors_rules"></a> [cors_rules](#cors_rule) | List of CORS configuration maps | `any` | <pre>{<br>   allowed_headers = ["*"]<br>   allowed_methods = ["PUT", "POST"]<br>   allowed_origins = ["https://arjstack.com"]<br>   expose_headers  = ["ETag"]<br>   max_age_seconds = 3000<br>} | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
 
 ## Nested Configuration Maps:  
@@ -62,6 +63,17 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="bucket_key_enabled"></a> [bucket_key_enabled](#input\_bucket\_key\_enabled) | Whether or not to use Amazon S3 Bucket Keys for SSE-KMS.<br>Possible Values:<br>&nbsp;&nbsp;&nbsp;`Enabled`<br>&nbsp;&nbsp;&nbsp;`Disabled` | `string` | `null` | no |
 | <a name="sse_algorithm"></a> [sse_algorithm](#input\_sse\_algorithm) | The server-side encryption algorithm to use.<br>Possible Values:<br>&nbsp;&nbsp;&nbsp;`AES256`<br>&nbsp;&nbsp;&nbsp;`aws:kms` | `string` | `"AES256"` | no |
 | <a name="kms_key"></a> [kms_key](#input\_kms\_key) | The AWS KMS master key ID used for the SSE-KMS encryption. | `string` | `null` | no |
+
+#### cors_rule
+
+| Name | Description | Type | Default | Required |
+|:------|:------|:------|:------|:------:|
+| <a name="id"></a> [id](#input\_id) | Unique identifier for the rule. | `string` | `null` | no |
+| <a name="allowed_headers"></a> [allowed_headers](#input\_allowed\_headers) | Set of Headers that are specified in the Access-Control-Request-Headers header. | `set(string)` | `null` | no |
+| <a name="allowed_methods"></a> [allowed_methods](#input\_allowed\_methods) | Set of HTTP methods that you allow the origin to execute. | `set(string)` | `null` | no |
+| <a name="allowed_origins"></a> [allowed_origins](#input\_allowed\_origins) | Set of origins you want customers to be able to access the bucket from. | `set(string)` | `null` | no |
+| <a name="expose_headers"></a> [expose_headers](#input\_expose\_headers) | Set of headers in the response that you want customers to be able to access from their applications | `set(string)` | `null` | no |
+| <a name="max_age_seconds"></a> [max_age_seconds](#input\_max\_age\_seconds) | The time in seconds that your browser is to cache the preflight response for the specified resource. | `number` | `null` | no |
 
 ## Outputs
 
