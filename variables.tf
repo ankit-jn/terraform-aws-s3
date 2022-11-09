@@ -156,6 +156,30 @@ variable "transfer_acceleration" {
   }
 }
 
+variable "attach_bucket_policy" {
+    description = "Flag to decide if bucket policy should be attached to the bucket."
+    type        = bool
+    default     = false
+}
+
+variable "policy_file" {
+    description = "Policy File name with path relative to root directory."
+    type        = string
+    default     = "policies/policy.json"
+}
+
+variable "attach_policy_deny_insecure_transport" {
+    description = "Flag to decide for implementing bucket policy to deny bucket operations if in-transit data is not encrypted."
+    type        = bool
+    default     = false
+}
+
+variable "attach_policy_require_mfa" {
+    description = "Flag to decide for implementing bucket policy to deny bucket operations if the request is not authenticated by using MFA."
+    type        = bool
+    default     = false
+}
+
 variable "default_tags" {
     description = "(Optional) A map of tags to assign to all the resource."
     type = map(string)

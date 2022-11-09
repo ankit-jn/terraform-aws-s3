@@ -1,6 +1,7 @@
 locals {
 
     bucket_id = var.create ? aws_s3_bucket.this[0].id : data.aws_s3_bucket.this[0].id
+    bucket_arn = var.create ? aws_s3_bucket.this[0].arn : data.aws_s3_bucket.this[0].arn
     
     is_sse_kms = (var.enable_sse 
                         && try(var.server_side_encryption.sse_algorithm, "AES256") == "aws:kms")
