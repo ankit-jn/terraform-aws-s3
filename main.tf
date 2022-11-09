@@ -1,5 +1,7 @@
 ## S3 bucket
 resource aws_s3_bucket "this" {
+    count = var.create ? 1 : 0
+
     bucket = var.name
     
     force_destroy = var.force_destroy
@@ -14,7 +16,7 @@ resource aws_s3_bucket_acl "this" {
     count = ((try(length(var.grants), 0) > 0) 
                     || (var.acl != null && var.acl != "")) ? 1 : 0
 
-    bucket = aws_s3_bucket.this.id
+    bucket = local.bucket_id
     expected_bucket_owner = var.expected_bucket_owner
     
     acl    = try(length(var.grants), 0) > 0 ? null : try(var.acl, "private")
@@ -47,7 +49,7 @@ resource aws_s3_bucket_versioning "this" {
 
     count = var.enable_versioning ? 1 : 0
 
-    bucket = aws_s3_bucket.this.id
+    bucket = local.bucket_id
 
     expected_bucket_owner = var.expected_bucket_owner
 
@@ -64,8 +66,7 @@ resource aws_s3_bucket_server_side_encryption_configuration "this" {
   
     count = var.enable_sse ?  1 : 0
 
-    bucket = aws_s3_bucket.this.id
-
+    bucket = local.bucket_id
     expected_bucket_owner = var.expected_bucket_owner
 
     rule {
@@ -80,7 +81,10 @@ resource aws_s3_bucket_server_side_encryption_configuration "this" {
 
 ## Manages S3 bucket-level Public Access
 resource aws_s3_bucket_public_access_block "this" {
-    bucket = aws_s3_bucket.this.id
+
+    count = (try(length(keys(var.bucket_public_access)), 0) > 0) ?  1 : 0
+    
+    bucket = local.bucket_id
 
     block_public_acls       = try(var.bucket_public_access.block_public_acls, true)
     block_public_policy     = try(var.bucket_public_access.block_public_policy, true)
@@ -93,7 +97,7 @@ resource aws_s3_bucket_cors_configuration "this" {
 
     count = length(var.cors_rules) > 0 ? 1 : 0
 
-    bucket = aws_s3_bucket.this.id
+    bucket = local.bucket_id
     expected_bucket_owner = var.expected_bucket_owner
 
     dynamic "cors_rule" {
@@ -115,7 +119,7 @@ resource aws_s3_bucket_accelerate_configuration "this" {
 
     count = var.transfer_acceleration != null ? 1 : 0
 
-    bucket = aws_s3_bucket.this.id
+    bucket = local.bucket_id
 
     status = var.transfer_acceleration
 }

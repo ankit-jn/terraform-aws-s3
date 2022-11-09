@@ -1,11 +1,11 @@
 output "id" {
     description = "The name of the bucket."
-    value = aws_s3_bucket.this.id
+    value = var.create ? aws_s3_bucket.this[0].id : data.aws_s3_bucket.this[0].arn
 }
 
 output "arn" {
     description = "The ARN of the bucket."
-    value = aws_s3_bucket.this.arn
+    value = var.create ? aws_s3_bucket.this[0].arn : data.aws_s3_bucket.this[0].arn
 }
 
 output "kms_key" {

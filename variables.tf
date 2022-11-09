@@ -1,3 +1,9 @@
+variable "create" {
+    description = "Flag to decide if the bucket is created"
+    type        = bool
+    default     = true
+}
+
 variable "name" {
     description  = "The name of the bucket"
     type = string
@@ -120,13 +126,7 @@ ignore_public_acls      : Block public access to buckets and objects granted thr
 restrict_public_buckets : Block public and cross-account access to buckets and objects through any public bucket policies
 EOF
     type = map(bool)
-    default = {
-        block_public_acls       = true
-        block_public_policy     = true
-        ignore_public_acls      = true
-        restrict_public_buckets = true
-    }
-
+    default = {}
 }
 
 variable "cors_rules" {

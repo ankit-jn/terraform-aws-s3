@@ -34,6 +34,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 
 | Name | Description | Type | Default | Required | Example|
 |:------|:------|:------|:------|:------:|:------|
+| <a name="create"></a> [create](#input\_create) | Flag to decide if the bucket is created | `bool` | `true` | no | |
 | <a name="name"></a> [name](#input\_name) | The name of the bucket | `string` |  | yes | |
 | <a name="force_destroy"></a> [force_destroy](#input\_force\_destroy) | Flag to decide if all objects (including any locked objects) should be deleted from the bucket so that the bucket can be destroyed without error | `bool` | `false` | no | |
 | <a name="object_lock_enabled"></a> [object_lock_enabled](#input\_object\_lock\_enabled) | Flag to decide if this bucket has an Object Lock configuration enabled. | `bool` | `null` | no | |
@@ -46,7 +47,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="enable_sse"></a> [enable_sse](#input\_enable\_sse) | Flag to decide if server side encryption is enabled. | `bool` | `false` | no | |
 | <a name="create_kms_key"></a> [create_kms_key](#input\_create\_kms\_key) | Flag to decide if new KMS key (symmetric, encrypt/decrypt) is required for SSE-KMS encryption | `bool` | `false` | no | |
 | <a name="server_side_encryption"></a> [server_side_encryption](#server\_side\_encryption) | Server Side Encryption Configuration | `map(string)` | `{}` | no | <pre>{<br>   bucket_key_enabled = "Enabled"<br>   sse_algorithm      = "aws:kms"<br>} |
-| <a name="bucket_public_access"></a> [bucket_public_access](#input\_bucket\_public\_access) | Manages S3 bucket-level Public Access | `map(bool)` | <pre>{<br>   block_public_acls       = true<br>   block_public_policy     = true<br>   ignore_public_acls      = true<br>   restrict_public_buckets = true<br>} | no | |
+| <a name="bucket_public_access"></a> [bucket_public_access](#input\_bucket\_public\_access) | Manages S3 bucket-level Public Access | `map(bool)` | `{}` | no | <pre>{<br>   block_public_acls       = true<br>   block_public_policy     = true<br>   ignore_public_acls      = true<br>   restrict_public_buckets = true<br>} |
 | <a name="cors_rules"></a> [cors_rules](#cors_rule) | List of CORS configuration maps | `any` | <pre>{<br>   allowed_headers = ["*"]<br>   allowed_methods = ["PUT", "POST"]<br>   allowed_origins = ["https://arjstack.com"]<br>   expose_headers  = ["ETag"]<br>   max_age_seconds = 3000<br>} | no | |
 | <a name="transfer_acceleration"></a> [transfer_acceleration](#input\_transfer\_acceleration) | Sets the accelerate configuration of the bucket. Possible values are `Enabled` or `Suspended`. | `string` | `null` | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
