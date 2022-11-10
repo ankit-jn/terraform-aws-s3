@@ -109,6 +109,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 |:------|:------|:------|
 | <a name="id"></a> [id](#output\_id) | The name of the bucket. | `string` | 
 | <a name="arn"></a> [arn](#output\_arn) | The ARN of the bucket. | `string` | 
+| <a name="region"></a> [region](#output\_region) | The AWS region this bucket resides in. | `string` | 
 | <a name="kms_key"></a> [kms_key](#output\_kms\_key) | `map` | Attribute Map of KMS customer master key (CMK) to be used for encryption of the bucket objects.<br>&nbsp;&nbsp;&nbsp;`key_id` - The Key ID KSM Key.<br>&nbsp;&nbsp;&nbsp;`arn` - ARN of KMS Key<br>&nbsp;&nbsp;&nbsp;`policy` - KMS Key Policy. |
 
 ## Authors
