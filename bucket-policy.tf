@@ -87,7 +87,7 @@ data aws_iam_policy_document "deny_non_mfa" {
         condition {
             test      = "Bool"
             variable  = "aws:aws:MultiFactorAuthAge"
-            values    = ["true"]
+            values    = ["false"]
         }
     }
 }
