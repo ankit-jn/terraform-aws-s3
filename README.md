@@ -1,8 +1,8 @@
-# ARJ-Stack: AWS Simple Storage Service (S3) Terraform module
+## ARJ-Stack: AWS Simple Storage Service (S3) Terraform module
 
 A Terraform module for configuring S3 buckets
 
-## Resources
+### Resources
 This module features the following components to be provisioned with different combinations:
 
 - S3 Bucket [[aws_s3_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)]
@@ -14,24 +14,24 @@ This module features the following components to be provisioned with different c
 - S3 Bucket- Transfer Acceleration [[aws_s3_bucket_accelerate_configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_accelerate_configuration)]
 - S3 Bucket- Policy [[aws_s3_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)]
 
-## Requirements
+### Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.22.0 |
 
-## Providers
+### Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.22.0 |
 
-## Examples
+### Examples
 
 Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-examples/tree/main/aws-s3) for effectively utilizing this module.
 
-## Inputs
+### Inputs
 
 | Name | Description | Type | Default | Required | Example|
 |:------|:------|:------|:------|:------:|:------|
@@ -57,7 +57,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="attach_policy_require_mfa"></a> [attach_policy_require_mfa](#input\_attach\_policy\_require\_mfa) | Flag to decide for implementing bucket policy to deny bucket operations if the request is not authenticated by using MFA. | `bool` | `false` | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
 
-## Nested Configuration Maps:  
+### Nested Configuration Maps:  
 
 #### acl_grants 
 
@@ -103,7 +103,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="expose_headers"></a> [expose_headers](#input\_expose\_headers) | Set of headers in the response that you want customers to be able to access from their applications | `set(string)` | `null` | no |
 | <a name="max_age_seconds"></a> [max_age_seconds](#input\_max\_age\_seconds) | The time in seconds that your browser is to cache the preflight response for the specified resource. | `number` | `null` | no |
 
-## Outputs
+### Outputs
 
 | Name | Type | Description |
 |:------|:------|:------|
@@ -112,7 +112,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="region"></a> [region](#output\_region) | The AWS region this bucket resides in. | `string` | 
 | <a name="kms_key"></a> [kms_key](#output\_kms\_key) | `map` | Attribute Map of KMS customer master key (CMK) to be used for encryption of the bucket objects.<br>&nbsp;&nbsp;&nbsp;`key_id` - The Key ID KSM Key.<br>&nbsp;&nbsp;&nbsp;`arn` - ARN of KMS Key<br>&nbsp;&nbsp;&nbsp;`policy` - KMS Key Policy. |
 
-## Authors
+### Authors
 
 Module is maintained by [Ankit Jain](https://github.com/ankit-jn) with help from [these professional](https://github.com/arjstack/terraform-aws-s3/graphs/contributors).
 
