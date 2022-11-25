@@ -157,13 +157,13 @@ variable "transfer_acceleration" {
 }
 
 variable "attach_bucket_policy" {
-    description = "Flag to decide if bucket policy should be attached to the bucket."
+    description = "Flag to decide if bucket policy (as defined by `policy_file`) should be attached to the bucket."
     type        = bool
     default     = false
 }
 
 variable "policy_file" {
-    description = "Policy File name with path relative to root directory."
+    description = "Policy File name with path relative to root directory if `attach_buckey_policy` is set `true`."
     type        = string
     default     = "policies/policy.json"
 }
