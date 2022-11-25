@@ -17,9 +17,10 @@ data aws_iam_policy_document "compact" {
                 || var.attach_policy_require_mfa) ? 1 : 0
 
     source_policy_documents = compact([
+        var.policy_content,
         var.attach_bucket_policy ? data.template_file.policy_template[0].rendered : "",
         var.attach_policy_deny_insecure_transport ? data.aws_iam_policy_document.deny_insecure_transport[0].json : "",
-        var.attach_policy_require_mfa ? data.aws_iam_policy_document.deny_non_mfa[0].json : ""
+        var.attach_policy_require_mfa ? data.aws_iam_policy_document.deny_non_mfa[0].json : "",
         
     ])
 }

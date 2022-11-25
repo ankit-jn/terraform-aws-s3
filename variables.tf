@@ -168,6 +168,12 @@ variable "policy_file" {
     default     = "policies/policy.json"
 }
 
+variable "policy_content" {
+    description = "Policy statements to be added to Bucket Policy."
+    type        = string
+    default     = ""
+}
+
 variable "attach_policy_deny_insecure_transport" {
     description = "Flag to decide for implementing bucket policy to deny bucket operations if in-transit data is not encrypted."
     type        = bool
