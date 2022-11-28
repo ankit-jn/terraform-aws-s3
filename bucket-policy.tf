@@ -1,26 +1,28 @@
 ## Bucket Policy
 resource aws_s3_bucket_policy "this" {
     count = (var.attach_bucket_policy 
-                || (var.policy_content != null && var.policy_content != "")
                 || var.attach_policy_deny_insecure_transport
                 || var.attach_policy_require_mfa) ? 1 : 0
 
     bucket = local.bucket_id
 
     policy = data.aws_iam_policy_document.compact[0].json
+
+    depends_on = [
+        data.aws_iam_policy_document.compact
+    ]
 }
 
 ## Compact all the policies based on conditions
 data aws_iam_policy_document "compact" {
 
     count = (var.attach_bucket_policy 
-                || (var.policy_content != null && var.policy_content != "")
                 || var.attach_policy_deny_insecure_transport
                 || var.attach_policy_require_mfa) ? 1 : 0
 
     source_policy_documents = compact([
         var.policy_content,
-        var.attach_bucket_policy ? data.template_file.policy_template[0].rendered : "",
+        (try(var.policy_file, "") != "") ? data.template_file.policy_template[0].rendered : "",
         var.attach_policy_deny_insecure_transport ? data.aws_iam_policy_document.deny_insecure_transport[0].json : "",
         var.attach_policy_require_mfa ? data.aws_iam_policy_document.deny_non_mfa[0].json : ""
     ])
@@ -28,7 +30,7 @@ data aws_iam_policy_document "compact" {
 
 ## Provided Bucket Policy
 data template_file "policy_template" {
-    count = var.attach_bucket_policy ? 1 : 0
+    count = (var.attach_bucket_policy && try(var.policy_file, "") != "") ? 1 : 0
     
     template = file("${path.root}/${var.policy_file}")
 }

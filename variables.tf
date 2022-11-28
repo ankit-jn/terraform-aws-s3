@@ -169,7 +169,7 @@ variable "policy_file" {
 }
 
 variable "policy_content" {
-    description = "Policy statements to be added to Bucket Policy."
+    description = "Policy statements to be added to Bucket Policy if `attach_buckey_policy` is set `true`."
     type        = string
     default     = ""
 }

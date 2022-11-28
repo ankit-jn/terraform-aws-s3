@@ -53,7 +53,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="transfer_acceleration"></a> [transfer_acceleration](#input\_transfer\_acceleration) | Sets the accelerate configuration of the bucket. Possible values are `Enabled` or `Suspended`. | `string` | `null` | no | |
 | <a name="attach_bucket_policy"></a> [attach_bucket_policy](#input\_attach\_bucket\_policy) | Flag to decide if bucket policy should be attached to the bucket. | `bool` | `false` | no | |
 | <a name="policy_file"></a> [policy_file](#input\_policy\_file) | Policy File name with path relative to root directory if `attach_bucket_policy` is set `true`. | `string` | `"policies/policy.json"` | no | |
-| <a name="policy_content"></a> [policy_content](#input\_policy\_content) | Policy statements to be added to Bucket Policy. | `string` | `""` | no | |
+| <a name="policy_content"></a> [policy_content](#input\_policy\_content) | Policy statements to be added to Bucket Policy if `attach_bucket_policy` is set `true`.. | `string` | `""` | no | |
 | <a name="attach_policy_deny_insecure_transport"></a> [attach_policy_deny_insecure_transport](#input\_attach\_policy\_deny\_insecure\_transport) | Flag to decide for implementing bucket policy to deny bucket operations if in-transit data is not encrypted. | `bool` | `false` | no | |
 | <a name="attach_policy_require_mfa"></a> [attach_policy_require_mfa](#input\_attach\_policy\_require\_mfa) | Flag to decide for implementing bucket policy to deny bucket operations if the request is not authenticated by using MFA. | `bool` | `false` | no | |
 | <a name="default_tags"></a> [default_tags](#input\_default\_tags) | A map of tags to assign to all the resource. | `map(string)` | `{}` | no | |
