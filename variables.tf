@@ -165,7 +165,7 @@ variable "attach_bucket_policy" {
 variable "policy_file" {
     description = "Policy File name with path relative to root directory if `attach_buckey_policy` is set `true`."
     type        = string
-    default     = "policies/policy.json"
+    default     = ""
 }
 
 variable "policy_content" {
